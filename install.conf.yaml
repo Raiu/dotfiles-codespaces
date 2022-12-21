@@ -25,9 +25,9 @@
 
 - link:
     ~/.dotfiles: ""
-    ~/.config/vim: vim/
-    ~/.config/zsh: zsh/
-    ~/.local/share/fonts: fonts/
+    ~/.config/vim/vimrc: vim/vimrc
+    ~/.config/zsh/.zshrc: zsh/.zshrc
+    ~/.local/share/fonts/: fonts/
 
 - shell:
     - rm $HOME/{.bash*,.profile,.zshrc}
