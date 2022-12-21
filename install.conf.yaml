@@ -31,5 +31,6 @@
     ~/.local/share/fonts/: fonts/
 
 - shell:
-    - bash -c 'rm $HOME/{.bash*,.profile,.zshrc}'
+    #- bash -c 'rm $HOME/{.bash*,.profile,.zshrc}'
+    - source $ZDOTDIR/.zshrc
     - [git submodule update --init --recursive, Installing submodules]
