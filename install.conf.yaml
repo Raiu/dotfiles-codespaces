@@ -1,6 +1,6 @@
 - defaults:
-  link:
-    relink: true
+    link:
+        relink: true
 
 - clean: ["~"]
 
@@ -16,18 +16,18 @@
     - ZSH="$XDG_CONFIG_HOME/zsh/oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 - git:
-  "$XDG_CONFIG_HOME/zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting":
-    url: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-    description: "oh my zsh - Syntax Highlighting"
-  "$XDG_CONFIG_HOME/zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions":
-    url: "https://github.com/zsh-users/zsh-autosuggestions"
-    description: "oh my zsh - autosuggestions"
+    "$XDG_CONFIG_HOME/zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting":
+        url: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+        description: "oh my zsh - Syntax Highlighting"
+    "$XDG_CONFIG_HOME/zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions":
+        url: "https://github.com/zsh-users/zsh-autosuggestions"
+        description: "oh my zsh - autosuggestions"
 
 - link:
-  ~/.dotfiles: ""
-  ~/.config/vim: vim/
-  ~/.config/zsh: zsh/
-  ~/.local/share/fonts: fonts/
+    ~/.dotfiles: ""
+    ~/.config/vim: vim/
+    ~/.config/zsh: zsh/
+    ~/.local/share/fonts: fonts/
 
 - shell:
     - rm $HOME/{.bash*,.profile,.zshrc}
