@@ -4,8 +4,9 @@
 
 - clean: ["~"]
 
-- shell:
-    - chsh -s $(which zsh)
+- sudo:
+    - shell:
+        - chsh -s $(which zsh) $(whoami)
 
 - create:
     - ~/.cache
@@ -30,5 +31,5 @@
     ~/.local/share/fonts/: fonts/
 
 - shell:
-    - rm $HOME/{.bash*,.profile,.zshrc}
+    - bash -c 'rm $HOME/{.bash*,.profile,.zshrc}'
     - [git submodule update --init --recursive, Installing submodules]
