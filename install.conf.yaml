@@ -8,12 +8,10 @@
     - shell:
         - chsh -s $(which zsh) $(whoami)
 
-- create:
-    - ~/.cache
-    - ~/.config/{zsh,vim}
-    - ~/.local/{bin,share,state}
+#- create:
 
 - shell:
+    - mkdir -p $HOME/{.cache,.config/{tmux/plugins,vim/{autoload,colors,plugins},zsh},.local/{bin,share/fonts,state}}
     - ZSH="$XDG_CONFIG_HOME/zsh/oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 - git:
@@ -28,7 +26,7 @@
     ~/.dotfiles: ""
     ~/.config/vim/vimrc: vim/vimrc
     ~/.config/zsh/.zshrc: zsh/.zshrc
-    ~/.local/share/fonts/: fonts/
+    ~/.local/share/fonts/: fonts/**
 
 - shell:
     #- bash -c 'rm $HOME/{.bash*,.profile,.zshrc}'
