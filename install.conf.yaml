@@ -17,10 +17,13 @@
 - git:
     "$XDG_CONFIG_HOME/zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting":
         url: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-        description: "oh my zsh - Syntax Highlighting"
+        description: "omz - Syntax Highlighting"
     "$XDG_CONFIG_HOME/zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions":
-        url: "https://github.com/zsh-users/zsh-autosuggestions"
-        description: "oh my zsh - autosuggestions"
+        url: "https://github.com/zsh-users/zsh-autosuggestions.git"
+        description: "omz - AutoSuggestions"
+    "$XDG_CONFIG_HOME/zsh/pure":
+        url: "https://github.com/sindresorhus/pure.git"
+        description: "Pure"
 
 - link:
     ~/.dotfiles: ""
