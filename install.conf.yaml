@@ -8,20 +8,18 @@
     - shell:
         - chsh -s $(which zsh) $(whoami)
 
-#- create:
-
 - shell:
-    - mkdir -p $HOME/{.cache,.config/{tmux/plugins,vim/{autoload,colors,plugins},zsh},.local/{bin,share/fonts,state}}
-    - ZSH="$XDG_CONFIG_HOME/zsh/oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    - mkdir -p ~/.cache ~/.config/tmux/plugins ~/.config/vim/autoload ~/.config/vim/colors ~/.config/vim/plugins ~/.config/zsh ~/.local/bin ~/.local/state
+    - ZSH="~/.config/zsh/oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 - git:
-    "$XDG_CONFIG_HOME/zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting":
+    ~/.config/zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting:
         url: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
         description: "omz - Syntax Highlighting"
-    "$XDG_CONFIG_HOME/zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions":
+    ~/.config/zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions:
         url: "https://github.com/zsh-users/zsh-autosuggestions.git"
         description: "omz - AutoSuggestions"
-    "$XDG_CONFIG_HOME/zsh/pure":
+    ~/.config/zsh/pure:
         url: "https://github.com/sindresorhus/pure.git"
         description: "Pure"
 
@@ -29,9 +27,11 @@
     ~/.dotfiles: ""
     ~/.config/vim/vimrc: vim/vimrc
     ~/.config/zsh/.zshrc: zsh/.zshrc
-    #~/.local/share/fonts/: fonts/**
+    ~/.local/share/fonts/: 
+        create: true
+        glob: true
+        path: fonts/*
 
 - shell:
-    #- bash -c 'rm $HOME/{.bash*,.profile,.zshrc}'
-    - source $ZDOTDIR/.zshrc
+    - source ~/.config/zsh/.zshrc
     - [git submodule update --init --recursive, Installing submodules]
