@@ -2,10 +2,29 @@
 export ZSH="$ZDOTDIR/oh-my-zsh"
 fpath+=($ZDOTDIR/pure)
 
-# Zsh
+# OMZ
 ZSH_THEME=""
-plugins=(git)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
+DISABLE_AUTO_UPDATE=true
+DISABLE_UPDATE_PROMPT=true
+
+# History
+if [ ! -d "${XDG_STATE_HOME}/zsh" ] ; then mkdir -p "${XDG_STATE_HOME}/zsh" ; fi
+HISTFILE="${XDG_STATE_HOME}/zsh/history"
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory
+
+# Fix TC
+export COLORTERM='truecolor'
+
+# Silence or i kill you
+unsetopt BEEP
+
+# Completion
+compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump-${ZSH_VERSION}"
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME}/zsh/zcompcache"
 
 # Pure
 autoload -U promptinit; promptinit
@@ -16,9 +35,26 @@ zstyle :prompt:pure:git:stash show yes
 
 prompt pure
 
+# Mod functions
+chpwd() {
+  exa --icons --group-directories-first
+}
+
 # Vim
 export MYVIMRC='$XDG_CONFIG_HOME/vim/vimrc'
 export VIMINIT='source $MYVIMRC'
 
-DISABLE_AUTO_UPDATE=true
-DISABLE_UPDATE_PROMPT=true
+# Alias
+alias ls='exa --icons --group-directories-first'
+alias lsa='exa -a --icons --group-directories-first'
+alias lt='exa -T --group-directories-first --icons --git'
+alias lta='exa -Ta --group-directories-first --icons --git'
+alias la='exa -lamhg@ --group-directories-first --color-scale --icons --git'
+alias lx='exa -lbhHigUmuSa@ --group-directories-first --color-scale --icons --git --time-style=long-iso'
+
+alias screen='screen -e^tt'
+alias wget='wget --hsts-file $XDG_CACHE_HOME/wget/wget-hsts'
+
+alias zre='source "${ZDOTDIR}/.zshrc"'
+alias zed='vim "${ZDOTDIR}/.zshrc"'
+alias ved='vim "${XDG_CONFIG_HOME}/vim/vimrc"'

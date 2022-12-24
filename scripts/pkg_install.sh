@@ -23,27 +23,27 @@ fi
 case "$os_id" in
 "debian")
     package_manager="apt-get"
-    package_file="packages/debian.list"
+    package_file="debian.list"
     install_command="install -y"
     ;;
 "ubuntu")
     package_manager="apt"
-    package_file="packages/ubuntu.list"
+    package_file="ubuntu.list"
     install_command="install -y"
     ;;
 "centos" | "fedora")
     package_manager="dnf"
-    package_file="packages/redhat.list"
+    package_file="redhat.list"
     install_command="install -y"
     ;;
 "arch")
     package_manager="pacman"
-    package_file="packages/arch.list"
+    package_file="arch.list"
     install_command="-S --noconfirm"
     ;;
 "alpine")
     package_manager="apk"
-    package_file="packages/alpine.list"
+    package_file="alpine.list"
     install_command="add -y"
     ;;
 *)

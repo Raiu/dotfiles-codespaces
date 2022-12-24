@@ -4,27 +4,24 @@
 
 - clean: ["~"]
 
+- link:
+    ~/.dotfiles: ""
+
+shell:
+    - bash -c ~/.dotfiles/scripts/pkg_install.sh
+
 - sudo:
     - shell:
         - chsh -s $(which zsh) $(whoami)
 
 - shell:
-    - mkdir -p ~/.cache ~/.config/tmux/plugins ~/.config/vim/autoload ~/.config/vim/colors ~/.config/vim/plugins ~/.config/zsh ~/.local/bin ~/.local/state
-    - ZSH="~/.config/zsh/oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    - mkdir -p ~/.cache ~/.config ~/.local/bin ~/.local/share ~/.local/state
 
-- git:
-    ~/.config/zsh/oh-my-zsh/custom/plugins/zsh-syntax-highlighting:
-        url: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
-        description: "omz - Syntax Highlighting"
-    ~/.config/zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions:
-        url: "https://github.com/zsh-users/zsh-autosuggestions.git"
-        description: "omz - AutoSuggestions"
-    ~/.config/zsh/pure:
-        url: "https://github.com/sindresorhus/pure.git"
-        description: "Pure"
+- shell:
+    - mkdir -p ~/.config/zsh
+    - bash -c ~/.dotfiles/scripts/setup_zsh.sh
 
 - link:
-    ~/.dotfiles: ""
     ~/.config/vim/vimrc: vim/vimrc
     ~/.config/zsh/.zshrc: zsh/.zshrc
     ~/.local/share/fonts/: 
