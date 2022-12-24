@@ -8,7 +8,7 @@
     ~/.dotfiles: ""
 
 shell:
-    - bash -c ~/.dotfiles/scripts/pkg_install.sh
+    - bash ~/.dotfiles/scripts/pkg_install.sh
 
 - sudo:
     - shell:
@@ -19,7 +19,7 @@ shell:
 
 - shell:
     - mkdir -p ~/.config/zsh
-    - bash -c ~/.dotfiles/scripts/setup_zsh.sh
+    - bash ~/.dotfiles/scripts/setup_zsh.sh
 
 - link:
     ~/.config/vim/vimrc: vim/vimrc
