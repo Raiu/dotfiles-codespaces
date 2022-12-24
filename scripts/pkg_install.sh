@@ -7,11 +7,17 @@ if [ ! -f /etc/os-release ]; then
 fi
 
 # Read the ID field from /etc/os-release
-while read -r field value; do
-    if [ "$field" == "ID" ]; then
-        id=$(echo "$id" | awk '{print tolower($0)}')
+OLDIFS=$IFS
+IFS="="
+while read -r row; do
+    set $row
+    key=$1
+    value=$2
+    if [ "$key" == "ID" ]; then
+        os_id=$(echo "$value" | awk '{print tolower($0)}')
     fi
 done </etc/os-release
+IFS=$OLDIFS
 
 # Check if the id variable is set
 if [ -z "$os_id" ]; then

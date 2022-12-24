@@ -36,9 +36,15 @@ zstyle :prompt:pure:git:stash show yes
 prompt pure
 
 # Mod functions
-chpwd() {
-  exa --icons --group-directories-first
-}
+if which exa >/dev/null; then
+    chpwd() {
+        exa --icons --group-directories-first
+    }
+else
+    chpwd() {
+        LC_COLLATE=C ls -h --group-directories-first --color=auto
+    }
+fi
 
 # Vim
 export MYVIMRC='$XDG_CONFIG_HOME/vim/vimrc'
@@ -52,6 +58,11 @@ if which exa >/dev/null; then
     alias lta='exa -Ta --group-directories-first --icons --git'
     alias la='exa -lamhg@ --group-directories-first --color-scale --icons --git'
     alias lx='exa -lbhHigUmuSa@ --group-directories-first --color-scale --icons --git --time-style=long-iso'
+else
+    alias ls='LC_COLLATE=C ls -h --group-directories-first --color=auto'
+    alias lsa='LC_COLLATE=C ls -Ah --group-directories-first --color=auto'
+    alias ll='LC_COLLATE=C ls -lh --group-directories-first --color=auto'
+    alias la='LC_COLLATE=C ls -lAh --group-directories-first --color=auto'
 fi
 
 alias screen='screen -e^tt'
