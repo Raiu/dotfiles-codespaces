@@ -60,7 +60,7 @@ esac
 
 BASEDIR="$(cd "$(dirname "${0}")" && pwd)"
 
-if [ -f "$BASEDIR/$package_file"]; then
+if [ -f "$BASEDIR/$package_file" ]; then
     # Read the package file and create a string with each package separated by a space
     package_string=$(awk '{print}' ORS=' ' "$BASEDIR/$package_file")
 
