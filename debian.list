@@ -1,12 +1,15 @@
 atool
+bat
 black
 command-not-found
 curl
 dos2unix
+exa
 fd-find
 fdupes
 fontconfig
 fzf
+git
 htop
 iperf3
 lsof
@@ -25,4 +28,5 @@ unar
 vim
 wget
 zip
+zoxide
 zsh
