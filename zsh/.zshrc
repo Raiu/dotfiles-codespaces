@@ -45,12 +45,14 @@ export MYVIMRC='$XDG_CONFIG_HOME/vim/vimrc'
 export VIMINIT='source $MYVIMRC'
 
 # Alias
-alias ls='exa --icons --group-directories-first'
-alias lsa='exa -a --icons --group-directories-first'
-alias lt='exa -T --group-directories-first --icons --git'
-alias lta='exa -Ta --group-directories-first --icons --git'
-alias la='exa -lamhg@ --group-directories-first --color-scale --icons --git'
-alias lx='exa -lbhHigUmuSa@ --group-directories-first --color-scale --icons --git --time-style=long-iso'
+if which exa >/dev/null; then
+    alias ls='exa --icons --group-directories-first'
+    alias lsa='exa -a --icons --group-directories-first'
+    alias lt='exa -T --group-directories-first --icons --git'
+    alias lta='exa -Ta --group-directories-first --icons --git'
+    alias la='exa -lamhg@ --group-directories-first --color-scale --icons --git'
+    alias lx='exa -lbhHigUmuSa@ --group-directories-first --color-scale --icons --git --time-style=long-iso'
+fi
 
 alias screen='screen -e^tt'
 alias wget='wget --hsts-file $XDG_CACHE_HOME/wget/wget-hsts'
