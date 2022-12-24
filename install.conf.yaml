@@ -7,12 +7,9 @@
 - link:
     ~/.dotfiles: ""
 
-- sudo:
-    - shell:
-        - chsh -s $(which zsh) $(whoami)
-        - bash ~/.dotfiles/scripts/pkg_install.sh # Install packages
-
 - shell:
+    - sudo chsh -s $(which zsh) $(whoami) # Set zsh as default shell
+    - sudo bash ~/.dotfiles/scripts/pkg_install.sh # Install packages
     - mkdir -p ~/.cache ~/.config ~/.local/bin ~/.local/share ~/.local/state # Create XDG directoires
     - mkdir -p ~/.config/zsh # create zsh dir
     - bash ~/.dotfiles/scripts/setup_zsh.sh # Install omz and zsh plugins
