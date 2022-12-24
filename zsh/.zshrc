@@ -56,6 +56,7 @@ if which exa >/dev/null; then
     alias lsa='exa -a --icons --group-directories-first'
     alias lt='exa -T --group-directories-first --icons --git'
     alias lta='exa -Ta --group-directories-first --icons --git'
+    alias ll='exa -lamhg@ --group-directories-first --color-scale --icons --git'
     alias la='exa -lamhg@ --group-directories-first --color-scale --icons --git'
     alias lx='exa -lbhHigUmuSa@ --group-directories-first --color-scale --icons --git --time-style=long-iso'
 else
