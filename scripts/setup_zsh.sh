@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 # Check if $ZDOTDIR is set
 if [ -z "$ZDOTDIR" ]; then
     # Set $ZDOTDIR to $XDG_CONFIG_HOME/zsh if it is set
@@ -26,6 +28,7 @@ fi
 
 # Read the list of repositories from a file
 while read -r repo_url repo_path; do
+    eval repo_path="$repo_path"
     # Check if the repo is already cloned
     if [ -d "$repo_path/.git" ]; then
         # Update the repo if it is already cloned
