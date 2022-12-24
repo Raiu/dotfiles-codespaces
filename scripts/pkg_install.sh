@@ -59,9 +59,10 @@ case "$os_id" in
 esac
 
 BASEDIR="$(cd "$(dirname "${0}")" && pwd)"
+
 if [ -f "$BASEDIR/$package_file"]; then
     # Read the package file and create a string with each package separated by a space
-    package_string=$(awk '{printf $0 " "}' "$BASEDIR/$package_file")
+    package_string=$(awk '{print}' ORS=' ' "$BASEDIR/$package_file")
 
     # Install the packages using the appropriate package manager and install command
     $package_manager $install_command $package_string
