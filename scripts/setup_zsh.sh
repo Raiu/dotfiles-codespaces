@@ -17,8 +17,6 @@ if [ ! -d "$ZDOTDIR/oh-my-zsh" ]; then
     ZSH="$ZDOTDIR/oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
-OMZPLUGINS="$ZSH/custom/plugins"
-
 BASEDIR="$(cd "$(dirname "${0}")" && pwd)"
 
 if [ ! -f $BASEDIR/zsh.repo.list ]; then
