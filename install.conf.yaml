@@ -18,8 +18,12 @@
     - bash ~/.dotfiles/scripts/setup_zsh.sh # Install omz and zsh plugins
 
 - link:
-    ~/.config/vim/vimrc: vim/vimrc
-    ~/.config/zsh/.zshrc: zsh/.zshrc
+    ~/.config/vim/vimrc:
+      create: true
+      path: vim/vimrc
+    ~/.config/zsh/.zshrc:
+      create: true
+      path: zsh/.zshrc
     ~/.local/share/fonts/:
       create: true
       glob: true

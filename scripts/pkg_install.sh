@@ -58,14 +58,13 @@ case "$os_id" in
     ;;
 esac
 
-# Elevate to root using sudo
-if [ "$EUID" -ne 0 ]; then
-    sudo "$0" "$@"
-    exit 0
+BASEDIR="$(cd "$(dirname "${0}")" && pwd)"
+if [ -f "$BASEDIR/$package_file"]; then
+    # Read the package file and create a string with each package separated by a space
+    package_string=$(awk '{printf $0 " "}' "$BASEDIR/$package_file")
+
+    # Install the packages using the appropriate package manager and install command
+    $package_manager $install_command $package_string
+else
+    echo "Error: can not find $BASEDIR/$package_file"
 fi
-
-# Read the package file and create a string with each package separated by a space
-package_string=$(awk '{printf $0 " "}' "$package_file")
-
-# Install the packages using the appropriate package manager and install command
-$package_manager $install_command $package_string
