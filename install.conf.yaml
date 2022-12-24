@@ -1,33 +1,29 @@
 - defaults:
     link:
-        relink: true
+      relink: true
 
 - clean: ["~"]
-
-- link:
-    ~/.dotfiles: ""
-
-shell:
-    - bash ~/.dotfiles/scripts/pkg_install.sh
 
 - sudo:
     - shell:
         - chsh -s $(which zsh) $(whoami)
 
-- shell:
-    - mkdir -p ~/.cache ~/.config ~/.local/bin ~/.local/share ~/.local/state
+- link:
+    ~/.dotfiles: ""
 
 - shell:
-    - mkdir -p ~/.config/zsh
-    - bash ~/.dotfiles/scripts/setup_zsh.sh
+    - mkdir -p ~/.cache ~/.config ~/.local/bin ~/.local/share ~/.local/state # Create XDG directoires
+    - bash ~/.dotfiles/scripts/pkg_install.sh # Install packages
+    - mkdir -p ~/.config/zsh # create zsh dir
+    - bash ~/.dotfiles/scripts/setup_zsh.sh # Install omz and zsh plugins
 
 - link:
     ~/.config/vim/vimrc: vim/vimrc
     ~/.config/zsh/.zshrc: zsh/.zshrc
-    ~/.local/share/fonts/: 
-        create: true
-        glob: true
-        path: fonts/*
+    ~/.local/share/fonts/:
+      create: true
+      glob: true
+      path: fonts/*
 
 - shell:
     - source ~/.config/zsh/.zshrc
